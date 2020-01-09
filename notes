@@ -1,0 +1,43 @@
+PROFICIENCY = string
+
+FEATCHOICE = dicc< set<feature>, int>
+
+
+CHARACTER
+
+pcname		string
+playername	string
+levels		array<level>
+pcrace		race
+pcabilities	abilities
+proficiencies	set<proficiency>
+
+
+LEVEL
+
+hitDie		int
+features	featChoice
+
+
+
+FEATURE
+
+text		string
+uses		int
+longRest?	bool
+
+
+RACE
+
+abimods		abilities
+features	featChoice
+
+ABILITIES
+
+str		int
+.
+.
+.
+cha	 	int
+
+
