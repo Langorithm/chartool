@@ -26,9 +26,9 @@ public:
 	set<proficiency>	getProficiencies();
 	set<Feature>		getFeatures();
 	
-	Character(Race r, Job firstLevel, string bg);
+	Character(const Race& r, const Job& firstLevel, string bg);
 
-	void level up(Job j);
+	void levelUp(const Job& j);
 	
 private:
 	string 			_name;
@@ -43,4 +43,4 @@ private:
 	int			_initiative;
 	int			_speed;
 	
-}
+};

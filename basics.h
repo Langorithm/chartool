@@ -4,7 +4,7 @@
 #include <vector>
 
 
-using namespace std:
+using namespace std;
 
 
 struct Feature {
@@ -13,14 +13,21 @@ struct Feature {
 	int uses;		// If passive, uses = 0
 	bool longRest;		// Doesn't matter if uses = 0
 
-}
+};
 
 enum Ability {STR, DEX, CON, INT, WIS, CHA};
+int abilityMod(int score){
+	score -= 10;
+	score /= 2;
+	if (score < 0) score--;
+	return score;
+};
 
-typedef string 			Proficiency;
+
+typedef string 			proficiency;
 typedef map<Ability, int>	abilityScores;
 
-typedef map< set<Feature>, int > 	featChoice;
+typedef map< set<Feature>, int > 	featureChoice;
 typedef map< set<proficiency>, int > 	profChoice;
 typedef set< map< int, set<Ability> > > abilityChoice;		
 
@@ -46,9 +53,9 @@ typedef set< map< int, set<Ability> > > abilityChoice;
 struct Race {
 
 	featureChoice 	raceFeats;
-	abilityChoice	raceAbScores
+	abilityChoice	raceAbScores;
 	set<Race>	subraces;
-}
+};
 
 struct Job {
 	
@@ -57,4 +64,4 @@ struct Job {
 	set <proficiency> 	proficiencies;
 	vector<featureChoice>	levels;
 	set<Job>		subclasses;
-}
+};

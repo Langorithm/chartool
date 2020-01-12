@@ -51,7 +51,7 @@ hitDie		int
 skills 		profchoice
 proficiencies 	set<proficiency>
 levels		array<featChoice>
-
+sublcasses	set<job>
 
 CHARACTER
 
@@ -60,8 +60,6 @@ race		race
 jobs		map<job, int>
 bg		background
 abilities	abScores
-
-
 
 
 

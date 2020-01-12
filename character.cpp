@@ -15,14 +15,14 @@ map<Job, int> Character::getLevels(){
 int Character::getCharacterLevel(){
 	int res = 0;
 	
-	for (Job j : _jobs){
-		res += _jobs[j];
+	for (auto it = _jobs.begin(); it != _jobs.end(); it++){
+		res += it->second;
 	}
 
 }
 
 int Character::getProfBonus(){
-	int res = getCharacterLevel;
+	int res = getCharacterLevel();
 	res /= 4;
 	res += 2;
 	return res;
@@ -33,7 +33,7 @@ int Character::getMaxHP(){
 }
 
 int Character::getInitiative(){
-	return _Initiative;
+	return _initiative;
 }
 
 int Character::getSpeed(){
@@ -83,6 +83,14 @@ set<Feature> Character::getFeatures(){
 }
 
 
+Character(const Race& r, const Job& firstLevel, string bg){
+
+
+}
+
+void Character::levelUp(const Job& j){
+
+}
 
 
 
