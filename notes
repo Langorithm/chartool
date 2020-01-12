@@ -11,12 +11,13 @@ levels		array<level>
 pcrace		race
 pcabilities	abilities
 proficiencies	set<proficiency>
-
+abscores	map<ABILITY>
 
 LEVEL
 
 hitDie		int
 features	featChoice
+
 
 
 
@@ -39,5 +40,30 @@ str		int
 .
 .
 cha	 	int
+
+BACKGROUND
+?
+
+
+JOB
+
+hitDie		int
+skills 		profchoice
+proficiencies 	set<proficiency>
+levels		array<featChoice>
+
+
+CHARACTER
+
+name		string
+race		race
+jobs		map<job, int>
+bg		background
+abilities	abScores
+
+
+
+
+
 
 

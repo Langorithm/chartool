@@ -6,6 +6,7 @@
 
 using namespace std:
 
+
 struct Feature {
 	string name;
 	string text;
@@ -14,14 +15,16 @@ struct Feature {
 
 }
 
-enum abilityScore {STR, DEX, CON, INT, WIS, CHA};
+enum Ability {STR, DEX, CON, INT, WIS, CHA};
 
-typedef string Proficiency;
-typedef map< set<Feature>, int > featChoice;
-typedef set< map< int, set<abilityScore> > > scoreChoice;		
+typedef string 			Proficiency;
+typedef map<Ability, int>	abilityScores;
 
+typedef map< set<Feature>, int > 	featChoice;
+typedef map< set<proficiency>, int > 	profChoice;
+typedef set< map< int, set<Ability> > > abilityChoice;		
 
-/* Examples for scoreChoice
+/* Examples for abilityChoice
 	ORC: +2 Str, +1 Con, -2 Int
 	{A}
 	A(2)  -> {STR}
@@ -40,13 +43,18 @@ typedef set< map< int, set<abilityScore> > > scoreChoice;
 	B(1) -> {STR,DEX,CON,INT,WIS,CHA}
 */
 
-
-
-
-struct race {
+struct Race {
 
 	featureChoice 	raceFeats;
-	scoreChoice	raceAbScores
+	abilityChoice	raceAbScores
+	set<Race>	subraces;
 }
 
-
+struct Job {
+	
+	int 			hitDie;
+	profChoice 	  	skillChoices;
+	set <proficiency> 	proficiencies;
+	vector<featureChoice>	levels;
+	set<Job>		subclasses;
+}
