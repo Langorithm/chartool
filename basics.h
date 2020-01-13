@@ -1,7 +1,7 @@
 #include <map>
 #include <set>
-#include <string>
 #include <vector>
+#include <string>
 
 
 using namespace std;
@@ -51,17 +51,24 @@ typedef set< map< int, set<Ability> > > abilityChoice;
 */
 
 struct Race {
-
+	string		name;
 	featureChoice 	raceFeats;
 	abilityChoice	raceAbScores;
 	set<Race>	subraces;
 };
 
 struct Job {
-	
+	string 			name;
 	int 			hitDie;
 	profChoice 	  	skillChoices;
 	set <proficiency> 	proficiencies;
 	vector<featureChoice>	levels;
 	set<Job>		subclasses;
+};
+
+struct Game {
+	set<Race>       races;
+	set<Job>        jobs;
+	set<Background> backgrounds;
+	set<Character>  characters;
 };
