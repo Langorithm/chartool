@@ -26,10 +26,12 @@ int abilityMod(int score){
 
 typedef string 			proficiency;
 typedef map<Ability, int>	abilityScores;
+typedef int			spellSlotsTable[][20];
 
 typedef map< set<Feature>, int > 	featureChoice;
 typedef map< set<proficiency>, int > 	profChoice;
 typedef set< map< int, set<Ability> > > abilityChoice;		
+
 /* Examples for abilityChoice
 	ORC: +2 Str, +1 Con, -2 Int
 	{A}
@@ -49,7 +51,7 @@ typedef set< map< int, set<Ability> > > abilityChoice;
 	B(1) -> {STR,DEX,CON,INT,WIS,CHA}
 */
 
-int fullCaster[][20] = {
+const spellSlotsTable fullCaster = {
 	{2},	
 	{3},	
 	{4,2},	
@@ -72,7 +74,7 @@ int fullCaster[][20] = {
 	{4,3,3,3,3,2,2,1,1}	
 };
 
-int halfCaster[][20]  = {
+const spellSlotsTable halfCaster  = {
 	{},
 	{2},	
 	{3},	
@@ -95,7 +97,7 @@ int halfCaster[][20]  = {
 	{4,3,3,3,2}	
 };
 
-int thirdCaster[][20]  = {
+const spellSlotsTable thirdCaster  = {
 	{},
 	{},
 	{2},
@@ -132,5 +134,6 @@ struct Job {
 	set <proficiency> 	proficiencies;
 	vector<featureChoice>	levels;
 	set<Job>		subclasses;
+	int			casterTier;
 };
 

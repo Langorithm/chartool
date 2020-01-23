@@ -83,6 +83,45 @@ set<Feature> Character::getFeatures(){
 }
 
 
+vector<int> Character::getSpellSlots(){
+	spellSlotTable& spellTable = fullCaster; 		//Possibly replaced
+
+	auto build = getLevels();
+	
+
+	auto it = build.begin();
+
+	if (build.size() > 1){		//Multiclass Character
+		
+		//Determine caster level
+		while (it != build.end()){
+			//ERROR: No toma en cuenta multiclase del tipo Paladin/Fighter, solo Paladin/Sorcerer	
+
+
+			it++;
+		}
+
+
+	
+	} else {			//Single-classed Character
+		int tier = it->first.casterTier;
+		int level = getCharacterLevel();
+		
+		switch (tier){
+			case (1): spellTable = fullCaster; break;
+			case (2): spellTable = halfCaster; break;
+			case (3): spellTable = thirdCaster; break;
+			default : return {};
+		}
+
+			
+		vector<int> res(begin(spellTable[level]), end(spellTable[level]));
+		return res;
+	
+	}
+	
+}
+
 Character(const Race& r, const Job& firstLevel, string bg){
 
 
