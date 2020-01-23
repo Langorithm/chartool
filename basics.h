@@ -30,7 +30,6 @@ typedef map<Ability, int>	abilityScores;
 typedef map< set<Feature>, int > 	featureChoice;
 typedef map< set<proficiency>, int > 	profChoice;
 typedef set< map< int, set<Ability> > > abilityChoice;		
-
 /* Examples for abilityChoice
 	ORC: +2 Str, +1 Con, -2 Int
 	{A}
@@ -50,6 +49,75 @@ typedef set< map< int, set<Ability> > > abilityChoice;
 	B(1) -> {STR,DEX,CON,INT,WIS,CHA}
 */
 
+int fullCaster[][20] = {
+	{2},	
+	{3},	
+	{4,2},	
+	{4,3},	
+	{4,3,2},	
+	{4,3,3},	
+	{4,3,3,1},	
+	{4,3,3,2},	
+	{4,3,3,3,1},	
+	{4,3,3,3,2},	
+	{4,3,3,3,2,1},	
+	{4,3,3,3,2,1},	
+	{4,3,3,3,2,1,1},	
+	{4,3,3,3,2,1,1},	
+	{4,3,3,3,2,1,1,1},	
+	{4,3,3,3,2,1,1,1},	
+	{4,3,3,3,2,1,1,1,1},	
+	{4,3,3,3,3,1,1,1,1},	
+	{4,3,3,3,3,2,1,1,1},	
+	{4,3,3,3,3,2,2,1,1}	
+};
+
+int halfCaster[][20]  = {
+	{},
+	{2},	
+	{3},	
+	{3},	
+	{4,2},	
+	{4,2},	
+	{4,3},	
+	{4,3},	
+	{4,3,2},	
+	{4,3,2},	
+	{4,3,3},	
+	{4,3,3},	
+	{4,3,3,1},	
+	{4,3,3,1},	
+	{4,3,3,2},	
+	{4,3,3,2},	
+	{4,3,3,3,1},	
+	{4,3,3,3,1},	
+	{4,3,3,3,2},	
+	{4,3,3,3,2}	
+};
+
+int thirdCaster[][20]  = {
+	{},
+	{},
+	{2},
+	{3},
+	{3},
+	{3},
+	{4,2},
+	{4,2},
+	{4,2},
+	{4,3},
+	{4,3},
+	{4,3},
+	{4,3,2},
+	{4,3,2},
+	{4,3,2},
+	{4,3,3},
+	{4,3,3},
+	{4,3,3},
+	{4,3,3,1},
+	{4,3,3,1}
+};
+
 struct Race {
 	string		name;
 	featureChoice 	raceFeats;
@@ -66,9 +134,3 @@ struct Job {
 	set<Job>		subclasses;
 };
 
-struct Game {
-	set<Race>       races;
-	set<Job>        jobs;
-	set<Background> backgrounds;
-	set<Character>  characters;
-};

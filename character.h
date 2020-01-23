@@ -3,31 +3,42 @@
 class Character{
 
 public:
+
+	//	Getters/Setters
 	string 		getName();
 	void 		setName(string s);
 
 	map<Job, int>	getLevels();
-	string		getRaceName();
+	Race&		getRace();
 
 	int		getCharacterLevel();
 	int		getProfBonus();
-	int 		getMaxHP();
-	int		getInitiative();
-	int		getSpeed();
 	int		getPassivePerception();
-	
-	void 		setMaxHP(int n);
-	void		setInitiative(int n);
-	void		setSpeed(int n);
 
+	int 		getMaxHP();
+	void 		setMaxHP(int n);
+	
+	int		getAC();
+	void		setAC(int n);
+	
+	int		getInitiative();
+	void		setInitiative(int n);
+	
+	int		getSpeed();
+	void		setSpeed(int n);
+	
 	abilityScores		getScores();
 	int			getAbilityMod(Ability a);
 	int 			getRollMod(proficiency p);
 	set<proficiency>	getProficiencies();
-	set<Feature>		getFeatures();
-	
+	set<Feature>		getFeatures();	
+	vector<int>		getSpellSlots();
+
+
+	//Constructor
 	Character(const Race& r, const Job& firstLevel, string bg);
 
+	
 	void levelUp(const Job& j);
 	
 private:
@@ -42,5 +53,5 @@ private:
 	int			_maxHP;	
 	int			_initiative;
 	int			_speed;
-	
+	int			_AC;
 };
