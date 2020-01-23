@@ -28,12 +28,20 @@ public:
 	void		setSpeed(int n);
 	
 	abilityScores		getScores();
+	void			setAbilityScore(Ability a, int n);
+
+	set<proficiency>	getProficiencies();
+	void			addProficiency(proficiency p);
+	void			removeProficiency(proficiency p);
+	
+	set<Feature>		getFeatures();
+	void			addFeature(Feature f);
+	void			removeFeature(Feature f);
+	
 	int			getAbilityMod(Ability a);
 	int 			getRollMod(proficiency p);
-	set<proficiency>	getProficiencies();
-	set<Feature>		getFeatures();	
 	vector<int>		getSpellSlots();
-
+	
 
 	//Constructor
 	Character(const Race& r, const Job& firstLevel, string bg);
