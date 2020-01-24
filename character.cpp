@@ -82,12 +82,13 @@ set<Feature> Character::getFeatures(){
 	return _features;
 }
 
-bool isMulticaster(const build b){
+	/* getSpellSlots Auxiliary*/
+bool isMulticaster(const build& b){
 	bool res = false;
 
 	int casterClasses = 0;
 
-	for (auto it = b.begin(); !res && it != b.end() => ; it++){
+	for (auto it = b.begin(); !res && it != b.end(); it++){
 		if (it->first.casterTier > 0) casterClasses++;
 		res = casterClasses < 2;
 	}		
@@ -95,7 +96,8 @@ bool isMulticaster(const build b){
 	return res;
 }
 
-int casterLevel(const build b){
+	/* getSpellSlots Auxiliary*/
+int casterLevel(const build& b){
 	int res = 0;
 	for (auto it = b.begin(); it != b.end() => ; it++){
 		int tier = it->first.casterTier;
@@ -106,10 +108,13 @@ int casterLevel(const build b){
 	return res;
 }
 
-int singleClassCasterTier(const build b){
+	/* getSpellSlots Auxiliary 
+	 PRE: No tiene más de una clase caster 
+	POST: res = tier de la clase caster */
+int singleClassCasterTier(const build& b){
 	int res = 0;
 	
-	for (auto it = b.begin(); res != 0 || it != b.end() => ; it++){
+	for (auto it = b.begin(); res != 0 || it != b.end(); it++){
 		if (it->first.casterTier != 0)
 			res = it->first.casterTier;
 	}
@@ -135,14 +140,10 @@ vector<int> Character::getSpellSlots(){
 		}
 	}
 
-	vector<int> res(begin(spellTable[level]), end(spellTable[casterLvl]));
+	vector<int> res(begin(spellTable[casterLvl]), end(spellTable[casterLvl]));
 	
 }
 
-Character(const Race& r, const Job& firstLevel, string bg){
-
-
-}
 
 void Character::levelUp(const Job& j){
 

@@ -44,7 +44,7 @@ public:
 	
 
 	//Constructor
-	Character(const Race& r, const Job& firstLevel, string bg);
+//	Character(const Race& r, const Job& firstLevel, string bg);
 
 	
 	void levelUp(const Job& j);
