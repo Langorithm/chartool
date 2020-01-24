@@ -52,7 +52,7 @@ public:
 private:
 	string 			_name;
 	Race&			_race;
-	map<Job, int> 		_jobs;
+	build	 		_jobs;
 	string			_background;
 	abilityScores		_scores;
 	set<proficiency>	_proficiencies;		

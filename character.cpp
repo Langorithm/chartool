@@ -82,43 +82,60 @@ set<Feature> Character::getFeatures(){
 	return _features;
 }
 
+bool isMulticaster(const build b){
+	bool res = false;
+
+	int casterClasses = 0;
+
+	for (auto it = b.begin(); !res && it != b.end() => ; it++){
+		if (it->first.casterTier > 0) casterClasses++;
+		res = casterClasses < 2;
+	}		
+
+	return res;
+}
+
+int casterLevel(const build b){
+	int res = 0;
+	for (auto it = b.begin(); it != b.end() => ; it++){
+		int tier = it->first.casterTier;
+		int level = it->second;
+
+		res += level/tier;			//Full caster: Tier 1. Half caster: Tier 2. Third caster: Tier 3
+	}
+	return res;
+}
+
+int singleClassCasterTier(const build b){
+	int res = 0;
+	
+	for (auto it = b.begin(); res != 0 || it != b.end() => ; it++){
+		if (it->first.casterTier != 0)
+			res = it->first.casterTier;
+	}
+	return res;
+}
 
 vector<int> Character::getSpellSlots(){
+	build casterBuild = getBuild();
+	
+	
 	spellSlotTable& spellTable = fullCaster; 		//Possibly replaced
+	int casterLvl = casterLevel(casterBuild);
 
-	auto build = getLevels();
-	
 
-	auto it = build.begin();
-
-	if (build.size() > 1){		//Multiclass Character
+	if (!isMulticaster(casterBuild)){
+		int tier = singleClassCasterTier(casterBuild);
 		
-		//Determine caster level
-		while (it != build.end()){
-			//ERROR: No toma en cuenta multiclase del tipo Paladin/Fighter, solo Paladin/Sorcerer	
-
-
-			it++;
-		}
-
-
-	
-	} else {			//Single-classed Character
-		int tier = it->first.casterTier;
-		int level = getCharacterLevel();
-		
-		switch (tier){
+		switch (tier) {
 			case (1): spellTable = fullCaster; break;
 			case (2): spellTable = halfCaster; break;
 			case (3): spellTable = thirdCaster; break;
 			default : return {};
 		}
-
-			
-		vector<int> res(begin(spellTable[level]), end(spellTable[level]));
-		return res;
-	
 	}
+
+	vector<int> res(begin(spellTable[level]), end(spellTable[casterLvl]));
 	
 }
 
