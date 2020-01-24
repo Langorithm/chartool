@@ -62,4 +62,5 @@ private:
 	int			_initiative;
 	int			_speed;
 	int			_AC;
+
 };
