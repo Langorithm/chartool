@@ -1,7 +1,7 @@
 #include "basics.h"
 
 typedef string spell;
-typedef vector<set> spellList;
+typedef vector<set< spell> > spellList;
 
 struct Spellcasting {
 

@@ -137,3 +137,5 @@ struct Job {
 	int			casterTier;
 };
 
+
+typedef map<Job&, int> 		build;

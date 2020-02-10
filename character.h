@@ -8,7 +8,7 @@ public:
 	string 		getName();
 	void 		setName(string s);
 
-	map<Job, int>	getLevels();
+	map<Job&, int>	getLevels();
 	Race&		getRace();
 
 	int		getCharacterLevel();

@@ -146,6 +146,21 @@ vector<int> Character::getSpellSlots(){
 
 
 void Character::levelUp(const Job& j){
+	
+	//Add level to character's build	
+	auto it = _jobs.find(j);
+	if (it != _jobs.end() )
+		it->second++;
+	else
+		_jobs[j] = 1;
+
+
+	//Increase Max HP
+	
+	//Increase Ability Scores
+	
+	//Activate Passive Features
+	
 
 }
 
