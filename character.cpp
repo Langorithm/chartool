@@ -148,7 +148,7 @@ vector<int> Character::getSpellSlots(){
 	vector<int> res(begin(spellTable[casterLvl]), end(spellTable[casterLvl]));
 	
 }
-
+*/
 
 void Character::levelUp(const Job& j){
 	
@@ -166,7 +166,6 @@ void Character::levelUp(const Job& j){
 	//Activate Passive Features
 
 }
-*/
 
 Character::Character(Job j, const Race& r) : _race(r) {
 	

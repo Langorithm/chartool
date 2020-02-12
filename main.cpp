@@ -20,9 +20,12 @@ void printCharacter(Character pc){
 	}
 
 	cout << "AC: " << pc.getAC() << endl;
-	cout << "Proficiency Bonus: " << pc.getMaxHP() << endl;
+	cout << "HP: " << pc.getMaxHP() << endl;
+	cout << "Proficiency Bonus: " << pc.getProfBonus() << endl;
 	cout << "Passive Perception: " << pc.getPassivePerception() << endl;
 	cout << "Speed " << pc.getSpeed() << endl;
+
+	cout << endl;
 }
 
 
@@ -46,7 +49,14 @@ int main (){
 	wizard.hitDie = 6;
 
 	Character pc1(fighter,elf);
+	pc1.levelUp(fighter);
+	pc1.levelUp(wizard);
 	Character pc2(wizard, human);
+
+	for (int i = 0; i < 13; i++){
+		pc2.levelUp(wizard);
+	}
+	printCharacter(pc1);
 	printCharacter(pc2);
 	return 0;
 }
