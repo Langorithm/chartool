@@ -3,13 +3,13 @@
 class Character{
 
 public:
-
+	Character(Job j, const Race& r);
 	//	Getters/Setters
 	string 		getName();
 	void 		setName(string s);
 
-	map<Job&, int>	getLevels();
-	Race&		getRace();
+	build		getLevels();
+	const Race&	getRace();
 
 	int		getCharacterLevel();
 	int		getProfBonus();
@@ -38,7 +38,7 @@ public:
 	void			addFeature(Feature f);
 	void			removeFeature(Feature f);
 	
-	int			getAbilityMod(Ability a);
+//	int			getAbilityMod(Ability a);
 	int 			getRollMod(proficiency p);
 	vector<int>		getSpellSlots();
 	
@@ -51,7 +51,7 @@ public:
 	
 private:
 	string 			_name;
-	Race&			_race;
+	const Race&		_race;
 	build	 		_jobs;
 	string			_background;
 	abilityScores		_scores;

@@ -1,5 +1,6 @@
-#include <map>
 #include <set>
+#include <map>
+#include <unordered_map>
 #include <vector>
 #include <string>
 
@@ -16,12 +17,12 @@ struct Feature {
 };
 
 enum Ability {STR, DEX, CON, INT, WIS, CHA};
-int abilityMod(int score){
-	score -= 10;
-	score /= 2;
-	if (score < 0) score--;
-	return score;
-};
+//int abilityMod(int score){
+//	score -= 10;
+//	score /= 2;
+//	if (score < 0) score--;
+//	return score;
+//};
 
 
 typedef string 			proficiency;
@@ -96,7 +97,6 @@ const spellSlotsTable halfCaster  = {
 	{4,3,3,3,2},	
 	{4,3,3,3,2}	
 };
-
 const spellSlotsTable thirdCaster  = {
 	{},
 	{},
@@ -125,6 +125,7 @@ struct Race {
 	featureChoice 	raceFeats;
 	abilityChoice	raceAbScores;
 	set<Race>	subraces;
+	int 		speed;
 };
 
 struct Job {
@@ -135,7 +136,12 @@ struct Job {
 	vector<featureChoice>	levels;
 	set<Job>		subclasses;
 	int			casterTier;
+
+	bool operator<(const Job other) const {
+		return name < other.name;
+	}
 };
 
+typedef map< Job, int>  build;
+//typedef map< reference_wrapper<Job>, int>  build;
 
-typedef map<Job&, int> 		build;

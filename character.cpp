@@ -1,5 +1,4 @@
 #include "character.h"
-
 string Character::getName(){
 	return _name;
 }
@@ -8,9 +7,14 @@ void Character::setName(string s){
 	_name = s;
 }
 
-map<Job, int> Character::getLevels(){
+const Race& Character::getRace(){
+	return _race;
+}
+
+build Character::getLevels(){
 	return _jobs;
 }
+
 
 int Character::getCharacterLevel(){
 	int res = 0;
@@ -18,7 +22,7 @@ int Character::getCharacterLevel(){
 	for (auto it = _jobs.begin(); it != _jobs.end(); it++){
 		res += it->second;
 	}
-
+	return res;
 }
 
 int Character::getProfBonus(){
@@ -40,6 +44,10 @@ int Character::getSpeed(){
 	return _speed;
 }
 
+int Character::getAC(){
+	return _AC;
+}
+
 int Character::getPassivePerception(){
 	return 10 + getRollMod("Perception");
 }
@@ -57,16 +65,13 @@ void Character::setSpeed(int n){
 	_speed = n;
 }
 
-abilityScores Character::getScores(){
-	return _scores;
 
-}
 
-int Character::getAbilityMod(Ability a){
-	return abilityMod(
-		getScores()[a]
-	);
-}
+//int Character::getAbilityMod(Ability a){
+//	return abilityMod(
+//		getScores()[a]
+//	);
+//}
 
 int Character::getRollMod(proficiency P){
 	//TO DO
@@ -82,7 +87,7 @@ set<Feature> Character::getFeatures(){
 	return _features;
 }
 
-	/* getSpellSlots Auxiliary*/
+	/* getSpellSlots Auxiliary/
 bool isMulticaster(const build& b){
 	bool res = false;
 
@@ -96,10 +101,10 @@ bool isMulticaster(const build& b){
 	return res;
 }
 
-	/* getSpellSlots Auxiliary*/
+	/ getSpellSlots Auxiliary*
 int casterLevel(const build& b){
 	int res = 0;
-	for (auto it = b.begin(); it != b.end() => ; it++){
+	for (auto it = b.begin(); it != b.end() ; it++){
 		int tier = it->first.casterTier;
 		int level = it->second;
 
@@ -108,9 +113,9 @@ int casterLevel(const build& b){
 	return res;
 }
 
-	/* getSpellSlots Auxiliary 
+	* getSpellSlots Auxiliary 
 	 PRE: No tiene más de una clase caster 
-	POST: res = tier de la clase caster */
+	POST: res = tier de la clase caster /
 int singleClassCasterTier(const build& b){
 	int res = 0;
 	
@@ -122,10 +127,10 @@ int singleClassCasterTier(const build& b){
 }
 
 vector<int> Character::getSpellSlots(){
-	build casterBuild = getBuild();
+	build casterBuild = getLevels();
 	
 	
-	spellSlotTable& spellTable = fullCaster; 		//Possibly replaced
+	spellSlotsTable& spellTable = fullCaster; 		//Possibly replaced
 	int casterLvl = casterLevel(casterBuild);
 
 
@@ -147,22 +152,35 @@ vector<int> Character::getSpellSlots(){
 
 void Character::levelUp(const Job& j){
 	
-	//Add level to character's build	
+	//Add level to character's build
 	auto it = _jobs.find(j);
 	if (it != _jobs.end() )
 		it->second++;
 	else
 		_jobs[j] = 1;
-
-
+	
 	//Increase Max HP
-	
-	//Increase Ability Scores
-	
+	_maxHP += j.hitDie/2 + 1;
+
+
 	//Activate Passive Features
-	
 
 }
+*/
 
-
-
+Character::Character(Job j, const Race& r) : _race(r) {
+	
+	_name = "joe the " + r.name;
+	_jobs[j] = 1;
+	_background = "barber";
+	_scores[STR] = 10;
+	_scores[DEX] = 10;
+	_scores[CON] = 10;
+	_scores[INT] = 10;
+	_scores[WIS] = 10;
+	_scores[CHA] = 10;
+	_maxHP = j.hitDie;
+	_initiative = 0;
+	_speed = r.speed;
+	_AC = 10;	
+}
