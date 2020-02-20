@@ -43,8 +43,8 @@ typedef set< map< int, set<Ability> > > abilityChoice;
 	HALF ELF: "+2 Cha, +1 to two other"
 	{A}
 	A(2) -> {CHA}
-	A(1) -> {STR,DEX,CON,INT,WIS,CHA}
-	A(1) -> {STR,DEX,CON,INT,WIS,CHA}
+	A(1) -> {STR,DEX,CON,INT,WIS}
+	A(1) -> {STR,DEX,CON,INT,WIS}
 	-----------------
 	CHANGELING: "+2 Cha, +1 to any"
 	{A,B}
@@ -137,7 +137,7 @@ struct Job {
 	set<Job>		subclasses;
 	int			casterTier;
 
-	bool operator<(const Job other) const {
+	bool operator<(const Job &other) const {
 		return name < other.name;
 	}
 };

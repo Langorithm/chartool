@@ -1,0 +1,17 @@
+RACE
+
+
+name= Elf
+size= 0
+speed= 30
+
+abilityChoice
+{ A }
+A 2 { DEX }
+endChoice
+
+featChoice
+
+endChoice
+
+profChoice
